@@ -26,18 +26,19 @@ export const poiApi = {
       strategy: "jwt",
     },
     handler: async function (request, h) {
-      const category = await db.categoryStore.findById(request.params.id);
-      if (!category) {
-        return Boom.notFound("No category with this id");
+      const categoryText = await db.categoryStore.findById(request.payload.category_id);
+      if (!categoryText) {
+        return Boom.notFound("No category with this id" + " id is " + request.payload.category_id);
       }
-      const poi = await db.poiStore.create(
+
+      const poi = await db.poiStore.create_poi(
         request.payload.name,
         request.payload.latitude,
         request.payload.longitude,
-        request.payload.longitude,
         request.payload.description,
         request.auth.credentials,
-        request.payload.category
+        request.payload.category_id,
+        categoryText.name
       );
       return poi;
     },

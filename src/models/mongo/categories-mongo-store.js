@@ -13,7 +13,7 @@ export const categoryMongoStore = {
 
   async findByName(name) {
     const category = await Category.findOne({
-      lastName,
+      name,
     });
     return category;
   },

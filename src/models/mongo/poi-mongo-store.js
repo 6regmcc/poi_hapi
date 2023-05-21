@@ -11,15 +11,15 @@ export const poiMongoStore = {
     return pois;
   },
 
-  async create_poi(name, latitude, longitude, description, user, category) {
+  async create_poi(name, latitude, longitude, description, user, category_id, categoryText) {
     const newPoi = new Poi({
-      name,
-      latitude,
-      longitude,
-      description,
+      name: name,
+      latitude: latitude,
+      longitude: longitude,
+      description: description,
       user: user._id,
-      category: category._id,
-      categoryText: category.name,
+      category: category_id,
+      categoryText: categoryText,
     });
     await newPoi.save();
     return newPoi;
