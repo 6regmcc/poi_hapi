@@ -53,4 +53,13 @@ export const poiApi = {
       return { success: true };
     },
   },
+  deletePoi: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      await db.poiStore.deletePoi(request.params.poi_id);
+      return { success: true };
+    },
+  },
 };

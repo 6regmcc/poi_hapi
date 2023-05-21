@@ -1,4 +1,5 @@
 import { Poi } from "./poi.js";
+import { Category } from "./category.js";
 
 export const poiMongoStore = {
   async getAllPois() {
@@ -27,5 +28,18 @@ export const poiMongoStore = {
 
   async deleteAll() {
     await Poi.deleteMany({});
+  },
+
+  async findById(id) {
+    const poi = await Category.findOne({ _id: id }).lean();
+    return poi;
+  },
+
+  async deletePoi(id) {
+    try {
+      await Poi.deleteOne({ _id: id });
+    } catch (error) {
+      console.log("bad id");
+    }
   },
 };
