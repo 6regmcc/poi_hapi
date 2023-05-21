@@ -42,4 +42,12 @@ export const poiMongoStore = {
       console.log("bad id");
     }
   },
+  async editPoi(id, name, description, latitude, longitude) {
+    const poi = await Poi.findById(id);
+    poi.name = name;
+    poi.description = description;
+    poi.latitude = latitude;
+    poi.longitude = longitude;
+    await poi.save();
+  },
 };

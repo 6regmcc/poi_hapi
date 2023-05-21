@@ -62,4 +62,13 @@ export const poiApi = {
       return { success: true };
     },
   },
+  editPoi: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      await db.poiStore.editPoi(request.params.poi_id, request.payload.name, request.payload.description, request.payload.latitude, request.payload.longitude);
+      return { sucess: true };
+    },
+  },
 };
