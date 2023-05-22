@@ -31,7 +31,8 @@ export const poiMongoStore = {
   },
 
   async findById(id) {
-    const poi = await Category.findOne({ _id: id }).lean();
+    const poi = await Poi.findOne({ _id: id });
+    console.log(poi);
     return poi;
   },
 
@@ -42,12 +43,15 @@ export const poiMongoStore = {
       console.log("bad id");
     }
   },
-  async editPoi(id, name, description, latitude, longitude) {
+  async editPoi(id, name, description, latitude, longitude, category, categoryText) {
     const poi = await Poi.findById(id);
+    console.log(category);
     poi.name = name;
     poi.description = description;
     poi.latitude = latitude;
     poi.longitude = longitude;
+    poi.category = category;
+    poi.categoryText = categoryText;
     await poi.save();
   },
 };

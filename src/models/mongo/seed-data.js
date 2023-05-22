@@ -28,6 +28,12 @@ export const seedData = {
     monument: {
       name: "monument",
     },
+    parking: {
+      name: "parking",
+    },
+    woods: {
+      name: "woods",
+    },
   },
   pois: {
     _model: "Poi",
@@ -35,9 +41,10 @@ export const seedData = {
       name: "Ticknock",
       latitude: 53.25560479525067,
       longitude: -6.2510505862023376,
-      description: "",
+      description: "Ticknock woods",
       user: "->users.homer",
       category: "->categories.hike",
+      categoryText: "hike",
     },
   },
 };

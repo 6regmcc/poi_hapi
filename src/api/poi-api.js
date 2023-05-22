@@ -62,12 +62,38 @@ export const poiApi = {
       return { success: true };
     },
   },
+  findPoiById: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      console.log(request.params.poi_id);
+      let poi = await db.poiStore.findById(request.params.poi_id);
+      return poi;
+    },
+  },
   editPoi: {
     auth: {
       strategy: "jwt",
     },
     handler: async function (request, h) {
-      await db.poiStore.editPoi(request.params.poi_id, request.payload.name, request.payload.description, request.payload.latitude, request.payload.longitude);
+      try {
+        const categoryText = await db.categoryStore.findById(request.payload.category);
+      } catch (error) {
+        console.log(error);
+      }
+
+      console.log("category text" + categoryText.name);
+      console.log(request.payload);
+      await db.poiStore.editPoi(
+        request.params.poi_id,
+        request.payload.name,
+        request.payload.description,
+        request.payload.latitude,
+        request.payload.longitude,
+        request.payload.category,
+        categoryText.name
+      );
       return { sucess: true };
     },
   },

@@ -11,8 +11,10 @@ export const apiRoutes = [
 
   { method: "GET", path: "/api/pois", config: poiApi.findAll },
   { method: "GET", path: "/api/categories/{id}/poi", config: poiApi.findByCategory },
+
   { method: "POST", path: "/api/categories/{id}/poi", config: poiApi.createPoi },
   { method: "DELETE", path: "/api/pois", config: poiApi.deleteAll },
+  { method: "GET", path: "/api/poi/{poi_id}", config: poiApi.findPoiById },
   { method: "DELETE", path: "/api/categories/{id}/poi/{poi_id}", config: poiApi.deletePoi },
   { method: "PATCH", path: "/api/categories/{id}/poi/{poi_id}", config: poiApi.editPoi },
 
