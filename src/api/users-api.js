@@ -49,6 +49,16 @@ export const userApi = {
     },
   },
 
+  editUser: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      await db.userStore.editUser(request.params.id, request.payload);
+      return { sucess: true };
+    },
+  },
+
   deleteAll: {
     auth: {
       strategy: "jwt",

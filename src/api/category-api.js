@@ -34,7 +34,9 @@ export const categoriesApi = {
       strategy: "jwt",
     },
     handler: async function (request, h) {
-      const newCategory = new Category(request.payload);
+      let newCategoryName = request.payload.name;
+      let newCategoryUser = request.auth.credentials;
+      const newCategory = new Category({ name: newCategoryName, user: newCategoryUser });
       newCategory.name = newCategory.name.toLowerCase();
       const category = await newCategory.save();
       if (category) {

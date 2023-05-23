@@ -77,13 +77,9 @@ export const poiApi = {
       strategy: "jwt",
     },
     handler: async function (request, h) {
-      try {
-        const categoryText = await db.categoryStore.findById(request.payload.category);
-      } catch (error) {
-        console.log(error);
-      }
+      const categoryText = await db.categoryStore.findById(request.payload.category);
 
-      console.log("category text" + categoryText.name);
+      console.log("category text is " + categoryText);
       console.log(request.payload);
       await db.poiStore.editPoi(
         request.params.poi_id,
