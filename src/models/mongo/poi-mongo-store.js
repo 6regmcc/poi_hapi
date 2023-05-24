@@ -54,4 +54,9 @@ export const poiMongoStore = {
     poi.categoryText = categoryText;
     await poi.save();
   },
+  async addImage(id, imageUrl) {
+    const poi = await Poi.findById(id);
+    poi.imageURL.push(imageUrl);
+    await poi.save();
+  },
 };

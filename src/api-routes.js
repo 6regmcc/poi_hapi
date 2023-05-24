@@ -19,7 +19,7 @@ export const apiRoutes = [
   { method: "GET", path: "/api/poi/{poi_id}", config: poiApi.findPoiById },
   { method: "DELETE", path: "/api/categories/{id}/poi/{poi_id}", config: poiApi.deletePoi },
   { method: "PATCH", path: "/api/categories/{id}/poi/{poi_id}", config: poiApi.editPoi },
-
+  { method: "PATCH", path: "/api/poi/{poi_id}/image", config: poiApi.addImage },
   { method: "GET", path: "/api/categories", config: categoriesApi.find },
   { method: "GET", path: "/api/categories/{id}", config: categoriesApi.findOne },
   { method: "POST", path: "/api/categories", config: categoriesApi.create },

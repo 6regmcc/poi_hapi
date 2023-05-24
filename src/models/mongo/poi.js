@@ -7,6 +7,11 @@ const poiSchema = new Schema({
   latitude: Number,
   longitude: Number,
   description: String,
+  imageURL: [
+    {
+      type: String,
+    },
+  ],
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",

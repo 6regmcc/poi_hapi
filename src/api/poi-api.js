@@ -93,4 +93,13 @@ export const poiApi = {
       return { sucess: true };
     },
   },
+  addImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      await db.poiStore.addImage(request.params.poi_id, request.payload.imageURL);
+      return { success: true };
+    },
+  },
 };
