@@ -33,6 +33,22 @@ export const userApi = {
       }
     },
   },
+  findByEmil: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const user = await db.userStore.getUserByEmail(request.query.email);
+        if (!user) {
+          return Boom.notFound("No User with this email");
+        }
+        return user;
+      } catch (err) {
+        return Boom.serverUnavailable("No User with this email");
+      }
+    },
+  },
 
   create: {
     auth: false,

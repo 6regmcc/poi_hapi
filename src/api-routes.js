@@ -4,6 +4,7 @@ import { categoriesApi } from "./api/category-api.js";
 
 export const apiRoutes = [
   { method: "GET", path: "/api/users", config: userApi.find },
+  { method: "GET", path: "/api/users/email", config: userApi.findByEmil },
   { method: "POST", path: "/api/users", config: userApi.create },
   { method: "DELETE", path: "/api/users", config: userApi.deleteAll },
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
