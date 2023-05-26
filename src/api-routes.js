@@ -17,6 +17,7 @@ export const apiRoutes = [
   { method: "POST", path: "/api/categories/{id}/poi", config: poiApi.createPoi },
   { method: "DELETE", path: "/api/pois", config: poiApi.deleteAll },
   { method: "GET", path: "/api/poi/{poi_id}", config: poiApi.findPoiById },
+  { method: "PATCH", path: "/api/poi/{poi_id}/removeImage", config: poiApi.removeImage },
   { method: "DELETE", path: "/api/categories/{id}/poi/{poi_id}", config: poiApi.deletePoi },
   { method: "PATCH", path: "/api/categories/{id}/poi/{poi_id}", config: poiApi.editPoi },
   { method: "PATCH", path: "/api/poi/{poi_id}/image", config: poiApi.addImage },

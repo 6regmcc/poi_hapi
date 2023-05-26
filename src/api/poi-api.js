@@ -102,4 +102,13 @@ export const poiApi = {
       return { success: true };
     },
   },
+  removeImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      await db.poiStore.removeImage(request.params.poi_id, request.payload.imageToDelete);
+      return { success: true };
+    },
+  },
 };

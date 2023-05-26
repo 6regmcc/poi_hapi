@@ -59,4 +59,9 @@ export const poiMongoStore = {
     poi.imageURL.push(imageUrl);
     await poi.save();
   },
+  async removeImage(id, imageToDelete) {
+    const poi = await Poi.findById(id);
+    poi.imageURL = poi.imageURL.filter((e) => e !== imageToDelete);
+    await poi.save();
+  },
 };
